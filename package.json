@@ -24,7 +24,7 @@
     },
     "homepage": "https://github.com/ngmaibulat/watch-dir-count#readme",
     "dependencies": {
-        "@aibulat/fs": "^0.0.4",
+        "@aibulat/fs": "^0.0.5",
         "@colors/colors": "^1.5.0",
         "dotenv": "^16.0.3"
     },
