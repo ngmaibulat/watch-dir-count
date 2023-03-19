@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@aibulat/fs': ^0.0.5
+  '@aibulat/fs': ^0.0.7
   '@colors/colors': ^1.5.0
   '@types/ejs': ^3.1.2
   '@types/node': ^18.15.3
@@ -11,7 +11,7 @@ specifiers:
   tap-diff: ^0.1.1
 
 dependencies:
-  '@aibulat/fs': 0.0.5
+  '@aibulat/fs': 0.0.7
   '@colors/colors': 1.5.0
   '@types/ejs': 3.1.2
   dotenv: 16.0.3
@@ -24,8 +24,8 @@ devDependencies:
 
 packages:
 
-  /@aibulat/fs/0.0.5:
-    resolution: {integrity: sha512-u0l3B3Lj3ljTAFmDgapwGw5aN3yGGgXkgcuCHw8DOK0PFzgnOfixozODTk2NIaXeQ7ClS96AnMS9dikZuK8gUQ==}
+  /@aibulat/fs/0.0.7:
+    resolution: {integrity: sha512-vY1sJXoRmr39popWPqCiTHf65YT3LsKXdLv/SFI+5nGFDID0dTwsGIjJxCOfTdo03/Lg79JgFMl6bRDfYXTowg==}
     hasBin: true
     dependencies:
       '@aibulat/isfile': 0.0.4

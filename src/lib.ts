@@ -59,9 +59,9 @@ export async function run() {
     console.log('')
     const tm = getTime()
     const threshold = getThreshold()
-    const dir = process.env.DIR || `.`
 
-    const res = (await countDir(dir)) as number
+    const dir = process.env.DIR || `.`
+    const res = await countDir(dir)
 
     let msg: string = `[${tm}] dir=${dir} threshold=${threshold} count=${res}\n`
     let shouldExec = false
@@ -78,8 +78,11 @@ export async function run() {
     if (shouldExec) {
         // const program = process.env.EXEC || 'ls'
         // const args = ['-la']
+        // {{dir}} {{count}}
 
-        const execStr = process.env.EXEC || 'ls -la'
+        let execStr = process.env.EXEC || 'ls -la'
+        execStr = execStr.replace('{{dir}}', dir)
+        execStr = execStr.replace('{{count}}', res.toString())
         const execArr = execStr.split(/\s+/)
 
         const program = execArr[0]
