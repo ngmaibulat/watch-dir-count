@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import color from '@colors/colors';
 import { countDir } from '@aibulat/fs';
 import { MIN_SECONDS } from './config.js';
+import { renderEmail } from './render.js';
+import { sendEml } from './smtp.js';
 dotenv.config();
 export function sleep(ms) {
     return new Promise((resolve, reject) => {
@@ -62,6 +64,17 @@ export async function run() {
         // const program = process.env.EXEC || 'ls'
         // const args = ['-la']
         // {{dir}} {{count}}
+        const eml = renderEmail(dir, res);
+        const from = process.env.EMAIL_FROM || 'wdc@example.com';
+        const toStr = process.env.EMAIL_TO || 'to@example.com';
+        const to = toStr.split(/,/);
+        try {
+            const sent = await sendEml(eml, from, to);
+        }
+        catch (err) {
+            console.error('Error sending email');
+            console.error(err);
+        }
         let execStr = process.env.EXEC || 'ls -la';
         execStr = execStr.replace('{{dir}}', dir);
         execStr = execStr.replace('{{count}}', res.toString());

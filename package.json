@@ -25,14 +25,19 @@
     "homepage": "https://github.com/ngmaibulat/watch-dir-count#readme",
     "dependencies": {
         "@aibulat/fs": "^0.0.7",
+        "@aibulat/json": "^0.0.8",
         "@colors/colors": "^1.5.0",
         "@types/ejs": "^3.1.2",
+        "bunyan": "^1.8.15",
         "dotenv": "^16.0.3",
         "ejs": "^3.1.9",
-        "handlebars": "^4.7.7"
+        "handlebars": "^4.7.7",
+        "nodemailer": "^6.9.1"
     },
     "devDependencies": {
+        "@types/bunyan": "^1.8.8",
         "@types/node": "^18.15.3",
+        "@types/nodemailer": "^6.4.7",
         "tap-diff": "^0.1.1"
     }
 }
