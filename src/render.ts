@@ -1,7 +1,12 @@
 import fs from 'node:fs'
 import handlebars from 'handlebars'
 
-export function renderEmail(directory: string, numFiles: number): string {
+export function renderEmail(
+    directory: string,
+    numFiles: number,
+    execStr: string,
+    retcode: number
+): string {
     //use env vars
     const templatePath = process.env.EMAIL_TEMPLATE || './templates/default.eml'
     const from = process.env.EMAIL_FROM || 'wdc@example.com'
@@ -24,6 +29,8 @@ export function renderEmail(directory: string, numFiles: number): string {
         directory,
         numFiles,
         date,
+        execStr,
+        retcode,
     })
 
     return html

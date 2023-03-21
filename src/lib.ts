@@ -82,7 +82,26 @@ export async function run() {
         // const args = ['-la']
         // {{dir}} {{count}}
 
-        const eml = renderEmail(dir, res)
+        let execStr = process.env.EXEC || 'ls -la'
+        execStr = execStr.replace('{{dir}}', dir)
+        execStr = execStr.replace('{{count}}', res.toString())
+        const execArr = execStr.split(/\s+/)
+
+        const program = execArr[0]
+        const args = execArr.slice(1)
+        let retcode = 0
+
+        try {
+            retcode = await exec(program, args)
+            const execmsg = color.green(
+                `exec="${execStr}" retcode=${retcode}\n`
+            )
+            process.stdout.write(execmsg)
+        } catch (err) {
+            console.error(`Error executing: "${execStr}"`)
+        }
+
+        const eml = renderEmail(dir, res, execStr, retcode)
         const from = process.env.EMAIL_FROM || 'wdc@example.com'
         const toStr = process.env.EMAIL_TO || 'to@example.com'
         const to = toStr.split(/,/)
@@ -92,26 +111,6 @@ export async function run() {
         } catch (err: any) {
             console.error('Error sending email')
             console.error(err)
-        }
-
-        let execStr = process.env.EXEC || 'ls -la'
-        execStr = execStr.replace('{{dir}}', dir)
-        execStr = execStr.replace('{{count}}', res.toString())
-        const execArr = execStr.split(/\s+/)
-
-        const program = execArr[0]
-        const args = execArr.slice(1)
-
-        try {
-            const retcode = await exec(program, args)
-            const execmsg = color.green(
-                `exec="${execStr}" retcode=${retcode}\n`
-            )
-            process.stdout.write(execmsg)
-        } catch (err) {
-            console.error(`Error executing: "${execStr}"`)
-            console.error(`Exiting...`)
-            process.exit(1)
         }
     }
 }
