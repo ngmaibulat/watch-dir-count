@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { run, getInterval, sleep } from './lib.js';
 // setInterval(run, getInterval())
 const interval = getInterval();

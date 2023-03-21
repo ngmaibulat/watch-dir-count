@@ -9,6 +9,7 @@ Watch count of files in a directory and
 
 ```bash
 npm install -g @aibulat/watch-dir-count
+mkdir log
 # create .env
 # create log.cfg.json
 wdc
@@ -20,11 +21,11 @@ Filename: `.env`
 
 Example:
 
-```
-INTERVAL="60"
-THRESHOLD="100"
-DIR="/var/queue"
-EXEC="echo {{dir}} {{count}}"
+```bash
+INTERVAL="60"     #seconds
+THRESHOLD="100"   #count of items to trigger script/email
+DIR="/var/queue"  #dir to watch
+EXEC="echo {{dir}} {{count}}"  #script to execute
 
 EMAIL_TEMPLATE="./templates/default.eml"
 EMAIL_FROM="wdc@example.com"
