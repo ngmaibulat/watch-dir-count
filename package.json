@@ -1,6 +1,6 @@
 {
     "name": "@aibulat/watch-dir-count",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "watch count of files in a directory",
     "main": "src/index.ts",
     "type": "module",
